@@ -16,49 +16,32 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
 
            
             while (true)
-            {
-                
-                Console.WriteLine("***********************************************");
-                
-                Console.WriteLine("Welcome To Your Recipe Application");
-               
-                Console.WriteLine("***********************************************");
-                
-                Console.WriteLine("Please enter (1) to launch the menu");
-                
+            {               
+                Console.WriteLine("***********************************************");                
+                Console.WriteLine("Welcome To Your Recipe Application");               
+                Console.WriteLine("***********************************************");                
+                Console.WriteLine("Please enter (1) to launch the menu");                
                 Console.WriteLine();
-
-
                
                 if (!int.TryParse(Console.ReadLine(), out choice) || choice != 1)
                 {
-                    Console.WriteLine("INVALID OPTION.ENTER (1) TO LAUNCH MENU");
-                   
+                    Console.WriteLine("INVALID OPTION.ENTER (1) TO LAUNCH MENU");                   
                     continue;
                 }
                 
                 Console.WriteLine();
-
-                Console.WriteLine("***********************************************");
-                
-                Console.WriteLine("PLEASE SELECT ONE OF THE NUMERIC OPTIONS BELOW");
-                
-                Console.WriteLine("***********************************************");
-              
-                Console.WriteLine("1.Enter new recipe");
-               
-                Console.WriteLine("2.Display recipe");
-               
-                
-                Console.WriteLine("3.Scale recipe (0.5, 2, or 3)");
-                Console.WriteLine("4.Reset recipe to original values");
-                
-                Console.WriteLine("5.Clear recipe data");
-               
-                Console.WriteLine("6.Exit Program");
-               
-                Console.WriteLine("***********************************************");
-                
+                Console.WriteLine("***********************************************");                
+                Console.WriteLine("PLEASE SELECT ONE OF THE NUMERIC OPTIONS BELOW");                
+                Console.WriteLine("***********************************************");              
+                Console.WriteLine("1.Enter new recipe");               
+                Console.WriteLine("2.Display all recipes");
+                Console.WriteLine("3.Display specific recipe");
+                Console.WriteLine("4.Scale specific recipe (0.5, 2, or 3)");
+                Console.WriteLine("5.Reset specific recipe to original values");                
+                Console.WriteLine("6.Clear all recipes data");
+                Console.WriteLine("7.Clear a specific recipes data");
+                Console.WriteLine("8.Exit Program");               
+                Console.WriteLine("***********************************************");                
                 Console.WriteLine();
 
                 int userChoice;
