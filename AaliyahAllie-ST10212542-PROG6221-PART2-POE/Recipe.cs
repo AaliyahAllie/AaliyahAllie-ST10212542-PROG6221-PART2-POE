@@ -71,8 +71,8 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
         public class Ingredient
         {
             public string Name { get; set; }
-            public double Quantity { get; set; }
-            public double OriginalQuantity { get; set; }
+            public int Quantity { get; set; }
+            public int OriginalQuantity { get; set; }
             public string UnitOfMeasurement { get; set; }
         }
     }
