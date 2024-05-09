@@ -109,27 +109,18 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine($"Step {i + 1}: ");                           
                             string step = Console.ReadLine();                           
                             newRecipe.AddStep(step);
-                        }
-                        
-                        recipes.Add(newRecipe);
-                        
-                        Console.WriteLine("RECIPE SUCCESSFULLY SAVED");
-                        
-                        Console.WriteLine();
-                      
+                        }                        
+                        recipes.Add(newRecipe);                        
+                        Console.WriteLine("RECIPE SUCCESSFULLY SAVED");                        
+                        Console.WriteLine();                      
                         break;
 
-
-                    case 2:
-                      
+                    case 2:                      
                         Console.WriteLine("Are you sure ypu want to display the recipe?(y/n)");
-                        string displayConfirmation = Console.ReadLine().ToLower();
-                       
-                        if (displayConfirmation == "y")
-                        {
+                        string displayConfirmation = Console.ReadLine().ToLower();                       
+                        if (displayConfirmation == "y")                        {
                             Console.WriteLine("Now Displaying Recipe");
-                        }
-                        
+                        }                        
                         else if (displayConfirmation == "n")
                         {
                             Console.WriteLine("Returning to the main menu.");
@@ -140,48 +131,58 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine("THERE IS NO RECIPE");
                             Console.WriteLine("Returning to main menu");
                             continue;
-                        }
-                       
-                        Console.WriteLine("***********************************************");
-                        
-                        Console.WriteLine("DISPLAYING RECIPE DETAILS:");
-                        
-                        Console.WriteLine("***********************************************");
-                        
+                        }                       
+                        Console.WriteLine("***********************************************");                        
+                        Console.WriteLine("DISPLAYING ALL RECIPE DETAILS:");                        
+                        Console.WriteLine("***********************************************");                        
                         foreach (Recipe recipe in recipes)
                         {
-                           
-                            recipe.DisplayRecipe();
-                            
-                            Console.WriteLine();
-                        }
-                        
+                            Console.WriteLine($"RecipeName: {recipe.RecipeName}");
+                            Console.WriteLine("Ingredients: ");
+                            foreach(var ingredient in recipe.Ingredients)
+                            {
+                                Console.WriteLine($"{ingredient.Name}: {ingredient.Quantity}: {ingredient.UnitOfMeasurement}");
+                            }
+                            Console.WriteLine("Steps:");
+                            int stepNumber = 1;
+                            foreach (var step in recipe.Steps)
+                            {
+                                Console.WriteLine($"Step {stepNumber}: {step}");
+                                stepNumber++;
+                            }
+                            Console.WriteLine("***********************************************");
+                        }                        
                         break;
 
                     case 3:
-                        
-                        Console.WriteLine("Are you sure ypu want to scale the recipe?(y/n)");
+                        Console.WriteLine("Are you sure ypu want to display a specific recipe?(y/n)");
                         string scaleConfirmation = Console.ReadLine().ToLower();
-                        
                         if (scaleConfirmation == "y")
                         {
                             Console.WriteLine("Now Scaling Recipe");
                         }
-                       
                         else if (scaleConfirmation == "n")
                         {
                             Console.WriteLine("Returning to the main menu.");
                             continue;
                         }
-                        
-                        Console.WriteLine("***********************************************");
-                       
-                        Console.WriteLine("SCALE RECIPE:");
-                        
-                        Console.WriteLine("***********************************************");
-                        
-                        Console.WriteLine("Enter the scaling factor(0.5,2,3): ");
-                        
+
+                    case 4:                        
+                        Console.WriteLine("Are you sure ypu want to scale the recipe?(y/n)");
+                        string scaleConfirmation = Console.ReadLine().ToLower();                        
+                        if (scaleConfirmation == "y")
+                        {
+                            Console.WriteLine("Now Scaling Recipe");
+                        }                       
+                        else if (scaleConfirmation == "n")
+                        {
+                            Console.WriteLine("Returning to the main menu.");
+                            continue;
+                        }                        
+                        Console.WriteLine("***********************************************");                       
+                        Console.WriteLine("SCALE SPECIFIC RECIPE:");                        
+                        Console.WriteLine("***********************************************");                        
+                        Console.WriteLine("Enter the scaling factor(0.5,2,3): ");                        
                         double scaleFactor;
                        
                         if (!double.TryParse(Console.ReadLine(), out scaleFactor))
