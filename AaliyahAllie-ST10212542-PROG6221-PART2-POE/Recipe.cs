@@ -40,11 +40,12 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                 Console.WriteLine($"{ingredient.Name}: {ingredient.Quantity} {ingredient.UnitOfMeasurement}");
             }Console.WriteLine("Steps: ");
             int stepNumber = 1;
-            foreach (var ingredient in Steps)
+            foreach (var step in Steps)
             {
                 Console.WriteLine($"Step {stepNumber}: {step}");
                 stepNumber++;
             }
+
             Console.WriteLine("**********************************************************************************");
         }
         
@@ -54,7 +55,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
             foreach (var ingredient in Ingredients)
             {
                 //Scale the original quantity of each ingredient by the given factor
-                ingredient.Quantity = (int)(ingredient.OriginalQuantity * factor);
+                ingredient.Quantity = (double)(ingredient.OriginalQuantity * factor);
             }
         }
 
@@ -70,7 +71,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
         public class Ingredient
         {
             public string Name { get; set; }
-            public int Quantity { get; set; }
+            public double Quantity { get; set; }
             public double OriginalQuantity { get; set; }
             public string UnitOfMeasurement { get; set; }
         }
