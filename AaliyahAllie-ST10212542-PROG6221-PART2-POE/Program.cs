@@ -47,100 +47,67 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                 int userChoice;
                
                 if (!int.TryParse(Console.ReadLine(), out userChoice))
-                {
-                   
-                    Console.WriteLine("INVALID CHOICE.PLEASE ENTER A VALID NUMBER.");
-                   
+                {                   
+                    Console.WriteLine("INVALID CHOICE.PLEASE ENTER A VALID NUMBER.");                   
                     continue;
                 }
                 
                 Console.WriteLine();
-
                
                 switch (userChoice)
                 {
-                    case 1:
-                        
+                    case 1:                        
                         Console.WriteLine("Are you sure you want to enter a new recipe?(y/n)");
-                        string recipeConfirmation = Console.ReadLine().ToLower();
-                       
+                        string recipeConfirmation = Console.ReadLine().ToLower();                       
                         if (recipeConfirmation == "y")
                         {
                             Console.WriteLine("Now Capturing Recipe");
-                        }
-                       
+                        }                       
                         else if (recipeConfirmation == "n")
                         {
                             Console.WriteLine("Returning to the main menu.");
                             continue;
-                        }
-                        
-                        Console.WriteLine("***********************************************");
-                      
-                        Console.WriteLine("ENTER NEW RECIPE DETAILS");
-                       
-                        Console.WriteLine("***********************************************");
-                       
-                        Console.WriteLine("Enter recipe name: ");
-                        
-                        string recipeName = Console.ReadLine();
-                      
-                        Recipe newRecipe = new Recipe(recipeName);
-                     
-                        Console.WriteLine("Enter number of ingredients: ");
-                      
-                        int numIngredients;
-                        
+                        }                        
+                        Console.WriteLine("***********************************************");                      
+                        Console.WriteLine("ENTER NEW RECIPE DETAILS");                       
+                        Console.WriteLine("***********************************************");                       
+                        Console.WriteLine("Enter recipe name: ");                        
+                        string recipeName = Console.ReadLine();                      
+                        Recipe newRecipe = new Recipe(recipeName);                     
+                        Console.WriteLine("Enter number of ingredients: ");                      
+                        int numIngredients;                        
                         if (!int.TryParse(Console.ReadLine(), out numIngredients))
                         {
-                            Console.WriteLine("INVALID INPUT.PLEASE ENTER A VALID NUMBER.");
-                            
+                            Console.WriteLine("INVALID INPUT.PLEASE ENTER A VALID NUMBER.");                            
                             continue;
-                        }
-                        
+                        }                        
                         for (int i = 0; i < numIngredients; i++)
-                        {
-                          
-                            Console.WriteLine($"Ingredient {i + 1}");
-                           
-                            Console.WriteLine("Name: ");
-                           
-                            string ingredientName = Console.ReadLine();
-                           
-                            Console.WriteLine("Quantity: ");
-                          
+                        {                          
+                            Console.WriteLine($"Ingredient {i + 1}");                           
+                            Console.WriteLine("Name: ");                           
+                            string ingredientName = Console.ReadLine();                           
+                            Console.WriteLine("Quantity: ");                          
                             int ingredientQuantity;
                             if (!int.TryParse(Console.ReadLine(), out ingredientQuantity))
                             {
-                                Console.WriteLine("Invalid input.Please enter a valid number.");
-                                
+                                Console.WriteLine("Invalid input.Please enter a valid number.");                                
                                 continue;
-                            }
-                            
-                            Console.WriteLine("Unit of Measurement (ml/mg/teaspoon/tablespoon/cup)");
-                            
-                            string unitOfMeasurement = Console.ReadLine();
-                           
+                            }                            
+                            Console.WriteLine("Unit of Measurement (ml/mg/teaspoon/tablespoon/cup)");                            
+                            string unitOfMeasurement = Console.ReadLine();                           
                             newRecipe.AddIngredients(ingredientName, ingredientQuantity, unitOfMeasurement);
-                        }
-                        
-                        Console.WriteLine("Enter the number of steps: ");
-                       
+                        }                        
+                        Console.WriteLine("Enter the number of steps: ");                       
                         int numSteps;
                         if (!int.TryParse(Console.ReadLine(), out numSteps))
                         {
-                            Console.WriteLine("Invalid input. Please enter a valid number.");
-                           
+                            Console.WriteLine("Invalid input. Please enter a valid number.");                           
                             continue;
-                        }
-                       
+                        }                       
                         for (int i = 0; i < numSteps; i++)
-                        {
-                            
-                            Console.WriteLine($"Step {i + 1}: ");
-                           
-                            string step = Console.ReadLine();
-                           
+                        {                            
+                            Console.WriteLine($"Step {i + 1}: ");                           
+                            string step = Console.ReadLine();                           
                             newRecipe.AddStep(step);
                         }
                         
