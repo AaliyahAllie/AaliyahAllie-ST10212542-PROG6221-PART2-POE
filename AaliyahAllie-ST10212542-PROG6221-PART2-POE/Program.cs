@@ -166,6 +166,29 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine("Returning to the main menu.");
                             continue;
                         }
+                        Console.WriteLine("***********************************************");
+                        Console.WriteLine("DISPLAYING SPECIFIC RECIPE:");
+                        Console.WriteLine("***********************************************");
+                        Console.WriteLine("LIST OF RECIPES:");
+                        Console.WriteLine("***********************************************");
+                        foreach (Recipe recipe in recipes)
+                        {
+                            Console.WriteLine($"RecipeName: {recipe.RecipeName}");
+                            Console.WriteLine("***********************************************");
+                        }
+                        Console.WriteLine("Enter Name of Recipe To Display");
+                        string recipeToDisplay = Console.ReadLine();
+                        Recipe specificRecipe = recipes.FirstOrDefault(r => r.RecipeName.Equals(recipeToDisplay, StringComparison.OrdinalIgnoreCase));
+                        if(specificRecipe != null)
+                        {
+                            specificRecipe.DisplayRecipe();
+                        }
+                        else
+                        {
+                            Console.WriteLine("RECIPE NOT FOUND");
+                        }
+                        break;
+
 
                     case 4:                        
                         Console.WriteLine("Are you sure ypu want to scale the recipe?(y/n)");
@@ -181,28 +204,51 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         }                        
                         Console.WriteLine("***********************************************");                       
                         Console.WriteLine("SCALE SPECIFIC RECIPE:");                        
-                        Console.WriteLine("***********************************************");                        
-                        Console.WriteLine("Enter the scaling factor(0.5,2,3): ");                        
-                        double scaleFactor;
-                       
-                        if (!double.TryParse(Console.ReadLine(), out scaleFactor))
+                        Console.WriteLine("***********************************************"); 
+                        if (recipes.Count == 0)
                         {
-                            Console.WriteLine("Invalid input.Enter a valid number");
-                            
+                            Console.WriteLine("THERE IS NO RECIPE TO SCALE");
+                            Console.WriteLine("RETURNING TO MAIN MENU");
                             continue;
                         }
-                        
-                        foreach (Recipe recipe in recipes)
+                        Console.WriteLine("Enter Name of Recipe To Scale:");
+                        string recipeToScale = Console.ReadLine();
+                        Recipe recipeToScaleObject = recipes.FirstOrDefault(r => r.RecipeName.Equals(recipeToScale, StringComparison.OrdinalIgnoreCase));
+                        if(recipeToScaleObject != null)
                         {
-                           
-                            recipe.ScaleRecipe(scaleFactor);
+                            Console.WriteLine("Enter the scaling factor(0.5,2,3): ");
+                            if (!double.TryParse(Console.ReadLine(), out double scaleFactor) || (scaleFactor != 0.5 && scaleFactor != 2 && scaleFactor != 3))
+                            {
+                                Console.WriteLine("Invalid scale factor. Please enter 0.5, 2, or 3.");
+                                continue;
+                            }
+                            recipeToScaleObject.ScaleRecipe(scaleFactor);
+
+                            // Display the scaled recipe
+                            Console.WriteLine("Scaled Recipe:");
+                            Console.WriteLine("***********************************************");
+                            Console.WriteLine($"Recipe Name: {recipeToScaleObject.RecipeName}");
+                            Console.WriteLine("Ingredients:");
+                            foreach (var ingredient in recipeToScaleObject.Ingredients)
+                            {
+                                Console.WriteLine($"{ingredient.Name}: {ingredient.Quantity * scaleFactor} {ingredient.UnitOfMeasurement}");
+                            }
+                            Console.WriteLine("Steps:");
+                            int stepNumber = 1;
+                            foreach (var step in recipeToScaleObject.Steps)
+                            {
+                                Console.WriteLine($"Step {stepNumber}: {step}");
+                                stepNumber++;
+                            }
+                            Console.WriteLine("***********************************************");
                         }
-                        Console.WriteLine("RECIPE SUCCESSFULLY SAVED");
-                        Console.WriteLine();
-                       
+                        else
+                        {
+                            Console.WriteLine("Recipe not found.");
+                        }
                         break;
 
-                    case 4:
+                    case 5:
                        
                         Console.WriteLine("Are you sure ypu want to reset the recipe?(y/n)");
                         string resetConfirmation = Console.ReadLine().ToLower();
@@ -232,7 +278,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
 
                         break;
 
-                    case 5:
+                    case 6:
                        
                         Console.WriteLine("Are you sure ypu want to clear the recipe?(y/n)");
                         string clearConfirmation = Console.ReadLine().ToLower();
@@ -259,7 +305,10 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                        
                         break;
 
-                    case 6:
+                    case 7:
+                        break;
+
+                    case 8:
                        
                         Console.WriteLine("Are you sure you want to exit? (y/n)");
                         string exitConfirmation = Console.ReadLine().ToLower();
