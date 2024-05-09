@@ -1,6 +1,6 @@
 ﻿//Aaliyah Allie ST10212542 PART 1
 //Prog6221 PART 1
-namespace AaliyahAllie_ST10212542_PROG6221_PART1
+namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
 {
     //MAIN CLASS
     public class Program
