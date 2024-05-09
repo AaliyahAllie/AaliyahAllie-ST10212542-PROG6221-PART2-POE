@@ -315,29 +315,33 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         break;
 
                     case 8:
-                       
+                        //user exption handling
+                        //code works by first asking the sure if they are sure they want to proceed with this selected option of exiting
+                        //if yes (y) it will continue to allow them to exit,
+                        //if not (n) it will go back to the main menu 
                         Console.WriteLine("Are you sure you want to exit? (y/n)");
                         string exitConfirmation = Console.ReadLine().ToLower();
-                        
+                        //if yes proceeds
                         if (exitConfirmation == "y")
                         {
                             Console.WriteLine("THANK YOU FOR USING THIS APPLICATION");
                             Console.WriteLine("PROGRAM WILL NOW CLOSE");
                             Environment.Exit(0);
                         }
-                      
+                        //if no goes back
                         else if (exitConfirmation == "n")
                         {
                             Console.WriteLine("Returning to the main menu.");
                             continue;
                         }
                         else
-                        
+                        //error message if wrong option is chosen
                         {
                             Console.WriteLine("Invalid input. Returning to the main menu.");
                             continue;
                         }
-                        
+                        // Exit the loop 
+                        //exits the program
                         break;
 
                     default:
