@@ -286,9 +286,8 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
 
                     case 6:
                        
-                        Console.WriteLine("Are you sure ypu want to clear the recipe?(y/n)");
-                        string clearConfirmation = Console.ReadLine().ToLower();
-                        
+                        Console.WriteLine("Are you sure ypu want to clear all recipes?(y/n)");
+                        string clearConfirmation = Console.ReadLine().ToLower();                        
                         if (clearConfirmation == "y")
                         {
                             Console.WriteLine("Now Clearing Recipe");
@@ -297,18 +296,19 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         {
                             Console.WriteLine("Returning to the main menu.");
                             continue;
-                        }
-                       
+                        }                       
                         Console.WriteLine("***********************************************");
                         Console.WriteLine("CLEAR RECIPE DATA:");
                         Console.WriteLine("***********************************************");
-
-                        recipes.Clear();
-
-                        
-                        Console.WriteLine("RECIPE DATA SUCCESSFULLY CLEARED");
-                        Console.WriteLine();
-                       
+                        if(recipes.Count == 0)
+                        {
+                            Console.WriteLine("THERE ARE NO RECIPES TO CLEAR");
+                            Console.WriteLine("RETURNING TO MAIN MENU");
+                            continue;
+                        }
+                        recipes.Clear();                        
+                        Console.WriteLine("ALL RECIPES DATA SUCCESSFULLY CLEARED");
+                        Console.WriteLine();                       
                         break;
 
                     case 7:
