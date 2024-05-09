@@ -54,8 +54,25 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
             foreach (var ingredient in Ingredients)
             {
                 //Scale the original quantity of each ingredient by the given factor
-                ingredient.Quantity = (int)(ingredient.OriginialQuantity * factor);
+                ingredient.Quantity = (int)(ingredient.OriginalQuantity * factor);
             }
+        }
+
+        public void ResetRecipe()
+        {
+            //Reset quantities of each ingredient to original values
+            foreach (var ingredient in Ingredients)
+            {
+                ingredient.Quantity = ingredient.OriginalQuantity;
+            }
+        }
+
+        public class Ingredient
+        {
+            public string Name { get; set; }
+            public int Quantity { get; set; }
+            public double OriginalQuantity { get; set; }
+            public string UnitOfMeasurement { get; set; }
         }
     }
 }
