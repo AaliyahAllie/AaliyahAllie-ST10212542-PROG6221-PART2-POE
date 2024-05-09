@@ -29,5 +29,23 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
         {
             Steps.Add(step);
         }
+
+        public void DisplayRecipe()
+        {
+            Console.WriteLine("**********************************************************************************");
+            Console.WriteLine($"Recipe Name: {RecipeName}");
+            Console.WriteLine("Ingredients: ");
+            foreach(var ingredient in Ingredients)
+            {
+                Console.WriteLine($"{ingredient.Name}: {ingredient.Quantity} {ingredient.UnitOfMeasurement}");
+            }Console.WriteLine("Steps: ");
+            int stepNumber = 1;
+            foreach (var ingredient in Steps)
+            {
+                Console.WriteLine($"Step {stepNumber}: {step}");
+                stepNumber++;
+            }
+            Console.WriteLine("**********************************************************************************");
+        }
     }
 }
