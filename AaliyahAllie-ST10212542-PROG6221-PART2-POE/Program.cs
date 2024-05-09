@@ -156,12 +156,12 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
 
                     case 3:
                         Console.WriteLine("Are you sure ypu want to display a specific recipe?(y/n)");
-                        string scaleConfirmation = Console.ReadLine().ToLower();
-                        if (scaleConfirmation == "y")
+                        string displaySpecificConfirmation = Console.ReadLine().ToLower();
+                        if (displaySpecificConfirmation == "y")
                         {
                             Console.WriteLine("Now Scaling Recipe");
                         }
-                        else if (scaleConfirmation == "n")
+                        else if (displaySpecificConfirmation == "n")
                         {
                             Console.WriteLine("Returning to the main menu.");
                             continue;
@@ -192,12 +192,12 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
 
                     case 4:                        
                         Console.WriteLine("Are you sure ypu want to scale the recipe?(y/n)");
-                        string scale = Console.ReadLine().ToLower();                        
-                        if (scale == "y")
+                        string scaleConfirmation = Console.ReadLine().ToLower();                        
+                        if (scaleConfirmation == "y")
                         {
                             Console.WriteLine("Now Scaling Recipe");
                         }                       
-                        else if (scale == "n")
+                        else if (scaleConfirmation == "n")
                         {
                             Console.WriteLine("Returning to the main menu.");
                             continue;
@@ -312,6 +312,38 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         break;
 
                     case 7:
+                        Console.WriteLine("Are you sure ypu want to clear a recipe's data(y/n)");
+                        string clear2Confirmation = Console.ReadLine().ToLower();
+                        if (clear2Confirmation == "y")
+                        {
+                            Console.WriteLine("Now Clearing Recipe");
+                        }
+                        else if (clear2Confirmation == "n")
+                        {
+                            Console.WriteLine("Returning to the main menu.");
+                            continue;
+                        }
+                        Console.WriteLine("***********************************************");
+                        Console.WriteLine("CLEAR SPECIFIC RECIPE DATA:");
+                        Console.WriteLine("***********************************************");
+                        if (recipes.Count == 0)
+                        {
+                            Console.WriteLine("THERE ARE NO RECIPES TO CLEAR");
+                            Console.WriteLine("RETURNING TO MAIN MENU");
+                            continue;
+                        }
+                        Console.WriteLine("Enter Name of Recipe To Clear:");
+                        string recipeToClear = Console.ReadLine();
+                        Recipe recipeToClearObject = recipes.FirstOrDefault(r => r.RecipeName.Equals(recipeToClear, StringComparison.OrdinalIgnoreCase));
+                        if(recipeToClearObject != null)
+                        {
+                            recipes.Remove(recipeToClearObject);
+                            Console.WriteLine("SUCCESSFULLY CLEARED");
+                        }
+                        else
+                        {
+                            Console.WriteLine("RECIPE NOT FOUND");
+                        }
                         break;
 
                     case 8:
