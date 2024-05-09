@@ -176,7 +176,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine($"RecipeName: {recipe.RecipeName}");
                             Console.WriteLine("***********************************************");
                         }
-                        Console.WriteLine("Enter Name of Recipe To Display");
+                        Console.WriteLine("Enter Name of Recipe To Display:");
                         string recipeToDisplay = Console.ReadLine();
                         Recipe specificRecipe = recipes.FirstOrDefault(r => r.RecipeName.Equals(recipeToDisplay, StringComparison.OrdinalIgnoreCase));
                         if(specificRecipe != null)
@@ -210,6 +210,11 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine("THERE IS NO RECIPE TO SCALE");
                             Console.WriteLine("RETURNING TO MAIN MENU");
                             continue;
+                        }
+                        foreach (Recipe recipe in recipes)
+                        {
+                            Console.WriteLine($"RecipeName: {recipe.RecipeName}");
+                            Console.WriteLine("***********************************************");
                         }
                         Console.WriteLine("Enter Name of Recipe To Scale:");
                         string recipeToScale = Console.ReadLine();
@@ -269,6 +274,11 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine("THERE ARE NO RECIPES TO RESET");
                             Console.WriteLine("RETURNING TO MAIN MENU.");
                             continue;
+                        }
+                        foreach (Recipe recipe in recipes)
+                        {
+                            Console.WriteLine($"RecipeName: {recipe.RecipeName}");
+                            Console.WriteLine("***********************************************");
                         }
                         Console.WriteLine("Enter The Name of Recipe To Reset");
                         string recipeToReset = Console.ReadLine();
@@ -332,6 +342,11 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine("RETURNING TO MAIN MENU");
                             continue;
                         }
+                        foreach (Recipe recipe in recipes)
+                        {
+                            Console.WriteLine($"RecipeName: {recipe.RecipeName}");
+                            Console.WriteLine("***********************************************");
+                        }
                         Console.WriteLine("Enter Name of Recipe To Clear:");
                         string recipeToClear = Console.ReadLine();
                         Recipe recipeToClearObject = recipes.FirstOrDefault(r => r.RecipeName.Equals(recipeToClear, StringComparison.OrdinalIgnoreCase));
@@ -349,7 +364,8 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                     case 8:
                         //user exption handling
                         //code works by first asking the sure if they are sure they want to proceed with this selected option of exiting
-                        //if yes (y) it will continue to allow them to exit,
+                        //if yes (y) it will continue to allow
+                        //them to exit,
                         //if not (n) it will go back to the main menu 
                         Console.WriteLine("Are you sure you want to exit? (y/n)");
                         string exitConfirmation = Console.ReadLine().ToLower();
