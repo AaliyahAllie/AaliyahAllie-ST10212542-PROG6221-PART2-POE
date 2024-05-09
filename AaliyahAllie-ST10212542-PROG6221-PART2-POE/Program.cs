@@ -192,12 +192,12 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
 
                     case 4:                        
                         Console.WriteLine("Are you sure ypu want to scale the recipe?(y/n)");
-                        string scaleConfirmation = Console.ReadLine().ToLower();                        
-                        if (scaleConfirmation == "y")
+                        string scale = Console.ReadLine().ToLower();                        
+                        if (scale == "y")
                         {
                             Console.WriteLine("Now Scaling Recipe");
                         }                       
-                        else if (scaleConfirmation == "n")
+                        else if (scale == "n")
                         {
                             Console.WriteLine("Returning to the main menu.");
                             continue;
@@ -250,32 +250,38 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
 
                     case 5:
                        
-                        Console.WriteLine("Are you sure ypu want to reset the recipe?(y/n)");
-                        string resetConfirmation = Console.ReadLine().ToLower();
-                        
+                        Console.WriteLine("Are you sure ypu want to reset recipe?(y/n)");
+                        string resetConfirmation = Console.ReadLine().ToLower();                        
                         if (resetConfirmation == "y")
                         {
                             Console.WriteLine("Now Reseting Recipe");
-                        }
-                        
+                        }                        
                         else if (resetConfirmation == "n")
                         {
                             Console.WriteLine("Returning to the main menu.");
                             continue;
-                        }
-                      
-                        Console.WriteLine("***********************************************");
-                       
+                        }                      
+                        Console.WriteLine("***********************************************");                       
                         Console.WriteLine("RESET RECIPE TO ORIGINAL VALUES");
                         Console.WriteLine("***********************************************");
-                      
-                        foreach (Recipe recipe in recipes)
+                        if (recipes.Count == 0)
                         {
-                            recipe.ResetRecipe();
+                            Console.WriteLine("THERE ARE NO RECIPES TO RESET");
+                            Console.WriteLine("RETURNING TO MAIN MENU.");
+                            continue;
                         }
-                        Console.WriteLine("RECIPE SUCCESSFULLY SAVED");
-                        Console.WriteLine();
-
+                        Console.WriteLine("Enter The Name of Recipe To Reset");
+                        string recipeToReset = Console.ReadLine();
+                        Recipe recipeToResetObject = recipes.FirstOrDefault(r => r.RecipeName.Equals(recipeToReset, StringComparison.OrdinalIgnoreCase));
+                        if (recipeToResetObject != null)
+                        {
+                            recipeToResetObject.ResetRecipe();
+                            Console.WriteLine("SUCCESSFULLY RESET");
+                        }
+                        else
+                        {
+                            Console.WriteLine("RECIPE NOT FOUND");
+                        }
                         break;
 
                     case 6:
