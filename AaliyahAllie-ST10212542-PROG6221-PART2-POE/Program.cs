@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
@@ -57,6 +58,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                 switch (userChoice)
                 {
                     case 1:
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("Are you sure you want to enter a new recipe?(y/n)");
                         string recipeConfirmation = Console.ReadLine().ToLower();
                         if (recipeConfirmation == "y")
@@ -68,6 +70,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine("Returning to the main menu.");
                             continue;
                         }
+                        Console.ResetColor();
                         Console.WriteLine("***********************************************");
                         Console.WriteLine("ENTER NEW RECIPE DETAILS");
                         Console.WriteLine("***********************************************");
@@ -123,7 +126,8 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         Console.WriteLine();
                         break;
 
-                    case 2:                      
+                    case 2:
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("Are you sure ypu want to display the recipe?(y/n)");
                         string displayConfirmation = Console.ReadLine().ToLower();                       
                         if (displayConfirmation == "y")                        {
@@ -139,19 +143,22 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine("THERE IS NO RECIPE");
                             Console.WriteLine("Returning to main menu");
                             continue;
-                        }                       
+                        }
+                        Console.ResetColor();
                         Console.WriteLine("***********************************************");                        
                         Console.WriteLine("DISPLAYING ALL RECIPE DETAILS:");                        
                         Console.WriteLine("***********************************************");
-
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
                         var sortedRecipes = recipes.OrderBy(r => r.RecipeName);
                         foreach (Recipe recipe in sortedRecipes)
                         {
                             recipe.DisplayRecipe(true);
                         }
+                        Console.ResetColor();
                         break;
-
+                        
                     case 3:
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("Are you sure ypu want to display a specific recipe?(y/n)");
                         string displaySpecificConfirmation = Console.ReadLine().ToLower();
                         if (displaySpecificConfirmation == "y")
@@ -162,9 +169,11 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         {
                             Console.WriteLine("Returning to the main menu.");
                             continue;
-                        }
+                        }                        
+                        Console.ResetColor();
                         Console.WriteLine("***********************************************");
                         Console.WriteLine("DISPLAYING SPECIFIC RECIPE:");
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
                         Console.WriteLine("***********************************************");
                         Console.WriteLine("LIST OF RECIPES:");
                         Console.WriteLine("***********************************************");
@@ -173,9 +182,11 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine($"RecipeName: {recipe.RecipeName}");
                             Console.WriteLine("***********************************************");
                         }
+                        Console.ResetColor();
                         Console.WriteLine("Enter Name of Recipe To Display:");
                         string recipeToDisplay = Console.ReadLine();
                         Recipe specificRecipe = recipes.FirstOrDefault(r => r.RecipeName.Equals(recipeToDisplay, StringComparison.OrdinalIgnoreCase));
+                        Console.ForegroundColor = ConsoleColor.Cyan;
                         if (specificRecipe != null)
                         {
                             specificRecipe.DisplayRecipe(true);
@@ -184,10 +195,12 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         {
                             Console.WriteLine("Recipe not found.");
                         }
+                        Console.ResetColor();
                         break;
 
 
-                    case 4:                        
+                    case 4:
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("Are you sure ypu want to scale the recipe?(y/n)");
                         string scaleConfirmation = Console.ReadLine().ToLower();                        
                         if (scaleConfirmation == "y")
@@ -198,7 +211,8 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         {
                             Console.WriteLine("Returning to the main menu.");
                             continue;
-                        }                        
+                        }
+                        Console.ResetColor();
                         Console.WriteLine("***********************************************");                       
                         Console.WriteLine("SCALE SPECIFIC RECIPE:");                        
                         Console.WriteLine("***********************************************"); 
@@ -208,11 +222,16 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine("RETURNING TO MAIN MENU");
                             continue;
                         }
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine("***********************************************");
+                        Console.WriteLine("LIST OF RECIPES:");
+                        Console.WriteLine("***********************************************");
                         foreach (Recipe recipe in recipes)
                         {
                             Console.WriteLine($"RecipeName: {recipe.RecipeName}");
                             Console.WriteLine("***********************************************");
                         }
+                        Console.ResetColor();
                         Console.WriteLine("Enter the name of the recipe to scale:");
                         string recipeToScale = Console.ReadLine();
                         Recipe recipeToScaleObject = recipes.FirstOrDefault(r => r.RecipeName.Equals(recipeToScale, StringComparison.OrdinalIgnoreCase));
@@ -224,6 +243,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                                 Console.WriteLine("Invalid scale factor. Please enter 0.5, 2, or 3.");
                                 continue;
                             }
+                            Console.ForegroundColor = ConsoleColor.Cyan;
                             recipeToScaleObject.ScaleRecipe(scaleFactor);
                             Console.WriteLine("Scaled Recipe:");
                             recipeToScaleObject.DisplayRecipe(true);
@@ -232,10 +252,11 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         {
                             Console.WriteLine("Recipe not found.");
                         }
+                        Console.ResetColor();
                         break;
 
                     case 5:
-                       
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("Are you sure ypu want to reset recipe?(y/n)");
                         string resetConfirmation = Console.ReadLine().ToLower();                        
                         if (resetConfirmation == "y")
@@ -246,7 +267,8 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         {
                             Console.WriteLine("Returning to the main menu.");
                             continue;
-                        }                      
+                        }
+                        Console.ResetColor();
                         Console.WriteLine("***********************************************");                       
                         Console.WriteLine("RESET RECIPE TO ORIGINAL VALUES");
                         Console.WriteLine("***********************************************");
@@ -256,16 +278,22 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine("RETURNING TO MAIN MENU.");
                             continue;
                         }
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine("***********************************************");
+                        Console.WriteLine("LIST OF RECIPES:");
+                        Console.WriteLine("***********************************************");
                         foreach (Recipe recipe in recipes)
                         {
                             Console.WriteLine($"RecipeName: {recipe.RecipeName}");
                             Console.WriteLine("***********************************************");
                         }
+                        Console.ResetColor();
                         Console.WriteLine("Enter the name of the recipe to reset:");
                         string recipeToReset = Console.ReadLine();
                         Recipe recipeToResetObject = recipes.FirstOrDefault(r => r.RecipeName.Equals(recipeToReset, StringComparison.OrdinalIgnoreCase));
                         if (recipeToResetObject != null)
                         {
+                            Console.ForegroundColor = ConsoleColor.Green;
                             recipeToResetObject.ResetRecipe();
                             Console.WriteLine("Recipe reset successfully!");
                         }
@@ -276,7 +304,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         break;
 
                     case 6:
-                       
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("Are you sure ypu want to clear all recipes?(y/n)");
                         string clearConfirmation = Console.ReadLine().ToLower();                        
                         if (clearConfirmation == "y")
@@ -287,7 +315,8 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         {
                             Console.WriteLine("Returning to the main menu.");
                             continue;
-                        }                       
+                        }
+                        Console.ResetColor();
                         Console.WriteLine("***********************************************");
                         Console.WriteLine("CLEAR RECIPE DATA:");
                         Console.WriteLine("***********************************************");
@@ -297,12 +326,15 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine("RETURNING TO MAIN MENU");
                             continue;
                         }
-                        recipes.Clear();                        
+                        recipes.Clear();
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("ALL RECIPES DATA SUCCESSFULLY CLEARED");
+                        Console.ResetColor();
                         Console.WriteLine();                       
                         break;
 
                     case 7:
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("Are you sure ypu want to clear a recipe's data(y/n)");
                         string clear2Confirmation = Console.ReadLine().ToLower();
                         if (clear2Confirmation == "y")
@@ -314,6 +346,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine("Returning to the main menu.");
                             continue;
                         }
+                        Console.ResetColor();
                         Console.WriteLine("***********************************************");
                         Console.WriteLine("CLEAR SPECIFIC RECIPE DATA:");
                         Console.WriteLine("***********************************************");
@@ -323,19 +356,26 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine("RETURNING TO MAIN MENU");
                             continue;
                         }
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine("***********************************************");
+                        Console.WriteLine("LIST OF RECIPES:");
+                        Console.WriteLine("***********************************************");
                         foreach (Recipe recipe in recipes)
                         {
                             Console.WriteLine($"RecipeName: {recipe.RecipeName}");
                             Console.WriteLine("***********************************************");
                         }
+                        Console.ResetColor();
                         Console.WriteLine("Enter Name of Recipe To Clear:");
                         
                         string recipeToClear = Console.ReadLine();
                         Recipe recipeToClearObject = recipes.FirstOrDefault(r => r.RecipeName.Equals(recipeToClear, StringComparison.OrdinalIgnoreCase));
                         if (recipeToClearObject != null)
                         {
+                            Console.ForegroundColor = ConsoleColor.Green;
                             recipes.Remove(recipeToClearObject);
                             Console.WriteLine("Recipe cleared successfully!");
+                            Console.ResetColor();
                         }
                         else
                         {
@@ -349,25 +389,37 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         //if yes (y) it will continue to allow
                         //them to exit,
                         //if not (n) it will go back to the main menu 
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("Are you sure you want to exit? (y/n)");
                         string exitConfirmation = Console.ReadLine().ToLower();
+                        Console.ResetColor();
                         //if yes proceeds
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
                         if (exitConfirmation == "y")
                         {
                             Console.WriteLine("THANK YOU FOR USING THIS APPLICATION");
                             Console.WriteLine("PROGRAM WILL NOW CLOSE");
                             Environment.Exit(0);
+                            Console.ResetColor();
+
                         }
+
                         //if no goes back
                         else if (exitConfirmation == "n")
                         {
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
                             Console.WriteLine("Returning to the main menu.");
+                            Console.ResetColor();
+
                             continue;
                         }
                         else
                         //error message if wrong option is chosen
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Invalid input. Returning to the main menu.");
+                            Console.ResetColor();
+
                             continue;
                         }
                         // Exit the loop 
@@ -384,7 +436,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
         }
         static void DisplayCalorieNotification(string message)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine(message);
             Console.ResetColor();
         }
