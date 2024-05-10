@@ -213,36 +213,20 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine($"RecipeName: {recipe.RecipeName}");
                             Console.WriteLine("***********************************************");
                         }
-                        Console.WriteLine("Enter Name of Recipe To Scale:");
+                        Console.WriteLine("Enter the name of the recipe to scale:");
                         string recipeToScale = Console.ReadLine();
                         Recipe recipeToScaleObject = recipes.FirstOrDefault(r => r.RecipeName.Equals(recipeToScale, StringComparison.OrdinalIgnoreCase));
-                        if(recipeToScaleObject != null)
+                        if (recipeToScaleObject != null)
                         {
-                            Console.WriteLine("Enter the scaling factor(0.5,2,3): ");
+                            Console.WriteLine("Enter the scale factor (0.5, 2, or 3):");
                             if (!double.TryParse(Console.ReadLine(), out double scaleFactor) || (scaleFactor != 0.5 && scaleFactor != 2 && scaleFactor != 3))
                             {
                                 Console.WriteLine("Invalid scale factor. Please enter 0.5, 2, or 3.");
                                 continue;
                             }
                             recipeToScaleObject.ScaleRecipe(scaleFactor);
-
-                            // Display the scaled recipe
                             Console.WriteLine("Scaled Recipe:");
-                            Console.WriteLine("***********************************************");
-                            Console.WriteLine($"Recipe Name: {recipeToScaleObject.RecipeName}");
-                            Console.WriteLine("Ingredients:");
-                            foreach (var ingredient in recipeToScaleObject.Ingredients)
-                            {
-                                Console.WriteLine($"{ingredient.Name}: {ingredient.Quantity * scaleFactor} {ingredient.UnitOfMeasurement}");
-                            }
-                            Console.WriteLine("Steps:");
-                            int stepNumber = 1;
-                            foreach (var step in recipeToScaleObject.Steps)
-                            {
-                                Console.WriteLine($"Step {stepNumber}: {step}");
-                                stepNumber++;
-                            }
-                            Console.WriteLine("***********************************************");
+                            recipeToScaleObject.DisplayRecipe(true);
                         }
                         else
                         {
