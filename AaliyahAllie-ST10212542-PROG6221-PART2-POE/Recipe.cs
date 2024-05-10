@@ -22,12 +22,12 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
             DisplayFoodGroupOptions();
             Console.WriteLine("Enter the number corresponding to the food group this ingredient belongs to:");
             int FoodGroupChoice;
-            if (!int.TryParse(Console.ReadLine(), out foodGroupChoice) || !AvailableFoodGroups.ContainsKey(foodGroupChoice))
+            if (!int.TryParse(Console.ReadLine(), out FoodGroupChoice) || !AvailableFoodGroups.ContainsKey(FoodGroupChoice))
             {
                 Console.WriteLine("Invalid food group choice. Please select a valid number from the options.");
                 return;
             }
-            string foodGroup = AvailableFoodGroups[foodGroupChoice];
+            string foodGroup = AvailableFoodGroups[FoodGroupChoice];
             Ingredients.Add(new Ingredient
             {
                 Name = name,
@@ -37,7 +37,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                 Calories = calories,
                 OriginalCalories = calories,
                 FoodGroup = foodGroup,
-                FoodGroupNumber = foodGroupChoice
+                FoodGroupNumber = FoodGroupChoice
             });
 
 
@@ -90,11 +90,13 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"(ALERT!!! Calories above 300 may be unhealthy.)");
-                CalorieNotifier?.Invoke($"ALERT!!! The recipe '{RecipeName}' exceeds 300 calories.");
+                CalorieNotifer?.Invoke($"ALERT!!! The recipe '{RecipeName}' exceeds 300 calories.");
             }
 
             Console.ResetColor();
             Console.WriteLine("***********************************************");
+
+        }
 
             public double CalculateTotalCalories()
             {

@@ -74,7 +74,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         Console.WriteLine("Enter recipe name: ");
                         string recipeName = Console.ReadLine();
                         Recipe newRecipe = new Recipe(recipeName);
-                        newRecipe.CalorieNotifier = DisplayCalorieNotification; // Assigning the delegate
+                        newRecipe.CalorieNotifer = DisplayCalorieNotification; // Assigning the delegate
                         Console.WriteLine("Enter number of ingredients: ");
                         int numIngredients;
                         if (!int.TryParse(Console.ReadLine(), out numIngredients))
