@@ -8,7 +8,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
         public string RecipeName { get; set; }
         public List<Ingredient> Ingredients { get; set; }
         public List<string> Steps { get; set; }
-        public RecipeCalorieNotification CalorieNotifer { get; set; };
+        public RecipeCalorieNotification CalorieNotifer { get; set; }
         public Recipe(string recipeName)
         {
             RecipeName = recipeName;
@@ -16,17 +16,33 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
             Steps = new List<string>();
         }
 
-        public void AddIngredients(string name, int quantity,string unitOfMeasurement)
+        public void AddIngredients(string name, int quantity,string unitOfMeasurement,double calories)
         {
+            Console.WriteLine("Available Food Groups:");
+            DisplayFoodGroupOptions();
+            Console.WriteLine("Enter the number corresponding to the food group this ingredient belongs to:");
+            int FoodGroupChoice;
+            if (!int.TryParse(Console.ReadLine(), out foodGroupChoice) || !AvailableFoodGroups.ContainsKey(foodGroupChoice))
+            {
+                Console.WriteLine("Invalid food group choice. Please select a valid number from the options.");
+                return;
+            }
+            string foodGroup = AvailableFoodGroups[foodGroupChoice];
             Ingredients.Add(new Ingredient
             {
                 Name = name,
                 Quantity = quantity,
                 OriginalQuantity = quantity,
-                UnitOfMeasurement = unitOfMeasurement
+                UnitOfMeasurement = unitOfMeasurement,
+                Calories = calories,
+                OriginalCalories = calories,
+                FoodGroup = foodGroup,
+                FoodGroupNumber = foodGroupChoice
             });
-        }
 
+
+        }
+    
         public void AddStep(string step)
         {
             Steps.Add(step);
