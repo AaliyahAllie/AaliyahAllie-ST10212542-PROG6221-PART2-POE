@@ -176,13 +176,13 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         Console.WriteLine("Enter Name of Recipe To Display:");
                         string recipeToDisplay = Console.ReadLine();
                         Recipe specificRecipe = recipes.FirstOrDefault(r => r.RecipeName.Equals(recipeToDisplay, StringComparison.OrdinalIgnoreCase));
-                        if(specificRecipe != null)
+                        if (specificRecipe != null)
                         {
-                            specificRecipe.DisplayRecipe();
+                            specificRecipe.DisplayRecipe(true);
                         }
                         else
                         {
-                            Console.WriteLine("RECIPE NOT FOUND");
+                            Console.WriteLine("Recipe not found.");
                         }
                         break;
 
