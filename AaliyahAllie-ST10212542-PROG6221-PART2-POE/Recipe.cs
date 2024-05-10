@@ -142,6 +142,8 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
             foreach (var ingredient in Ingredients)
             {
                 ingredient.Quantity = ingredient.OriginalQuantity;
+                //reset calories to original
+                ingredient.Calories = ingredient.OriginalCalories;
             }
         }
 
