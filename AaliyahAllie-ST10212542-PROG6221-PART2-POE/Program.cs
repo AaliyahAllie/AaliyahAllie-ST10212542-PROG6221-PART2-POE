@@ -261,17 +261,17 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine($"RecipeName: {recipe.RecipeName}");
                             Console.WriteLine("***********************************************");
                         }
-                        Console.WriteLine("Enter The Name of Recipe To Reset");
+                        Console.WriteLine("Enter the name of the recipe to reset:");
                         string recipeToReset = Console.ReadLine();
                         Recipe recipeToResetObject = recipes.FirstOrDefault(r => r.RecipeName.Equals(recipeToReset, StringComparison.OrdinalIgnoreCase));
                         if (recipeToResetObject != null)
                         {
                             recipeToResetObject.ResetRecipe();
-                            Console.WriteLine("SUCCESSFULLY RESET");
+                            Console.WriteLine("Recipe reset successfully!");
                         }
                         else
                         {
-                            Console.WriteLine("RECIPE NOT FOUND");
+                            Console.WriteLine("Recipe not found.");
                         }
                         break;
 
