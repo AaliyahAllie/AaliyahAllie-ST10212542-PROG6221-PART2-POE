@@ -95,7 +95,37 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
 
             Console.ResetColor();
             Console.WriteLine("***********************************************");
+
+            public double CalculateTotalCalories()
+            {
+                double totalCalories = 0;
+                foreach (var ingredient in Ingredients)
+                {
+                    totalCalories += ingredient.Calories;
+                }
+                return totalCalories;
+            }
+
+        public static readonly Dictionary<int, string> AvailableFoodGroups = new Dictionary<int, string>
+        {
+            { 1, "Starchy foods" },
+            { 2, "Vegetables and fruits" },
+            { 3, "Dry beans, peas, lentils and soya" },
+            { 4, "Chicken, fish, meat and eggs" },
+            { 5, "Milk and dairy products" },
+            { 6, "Fats and oil" },
+            { 7, "Water" }
+        };
+
+        public static void DisplayFoodGroupOptions()
+        {
+            foreach (var foodGroup in AvailableFoodGroups)
+            {
+                Console.WriteLine($"{foodGroup.Key}. {foodGroup.Value}");
+            }
         }
+
+
 
         public void ScaleRecipe(double factor)
         {//SCALE ISSUE FIXED MAY 10TH @ 1:26 AM
