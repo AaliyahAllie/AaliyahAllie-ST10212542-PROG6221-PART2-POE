@@ -125,15 +125,14 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
             }
         }
 
-
-
         public void ScaleRecipe(double factor)
-        {//SCALE ISSUE FIXED MAY 10TH @ 1:26 AM
-            // Loop through each ingredient
+        {
             foreach (var ingredient in Ingredients)
             {
                 // Scale the original quantity of each ingredient by the given factor
                 ingredient.Quantity = (int)(ingredient.OriginalQuantity * factor);
+                //Scale the calories 
+                ingredient.Calories *= factors;
             }
         }
 
