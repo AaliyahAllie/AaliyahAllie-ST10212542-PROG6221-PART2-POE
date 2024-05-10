@@ -132,7 +132,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                 // Scale the original quantity of each ingredient by the given factor
                 ingredient.Quantity = (int)(ingredient.OriginalQuantity * factor);
                 //Scale the calories 
-                ingredient.Calories *= factors;
+                ingredient.Calories *= factor;
             }
         }
 
