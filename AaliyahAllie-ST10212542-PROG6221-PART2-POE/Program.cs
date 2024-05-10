@@ -329,16 +329,17 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             Console.WriteLine("***********************************************");
                         }
                         Console.WriteLine("Enter Name of Recipe To Clear:");
+                        
                         string recipeToClear = Console.ReadLine();
                         Recipe recipeToClearObject = recipes.FirstOrDefault(r => r.RecipeName.Equals(recipeToClear, StringComparison.OrdinalIgnoreCase));
-                        if(recipeToClearObject != null)
+                        if (recipeToClearObject != null)
                         {
                             recipes.Remove(recipeToClearObject);
-                            Console.WriteLine("SUCCESSFULLY CLEARED");
+                            Console.WriteLine("Recipe cleared successfully!");
                         }
                         else
                         {
-                            Console.WriteLine("RECIPE NOT FOUND");
+                            Console.WriteLine("Recipe not found.");
                         }
                         break;
 
