@@ -134,8 +134,11 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         }                       
                         Console.WriteLine("***********************************************");                        
                         Console.WriteLine("DISPLAYING ALL RECIPE DETAILS:");                        
-                        Console.WriteLine("***********************************************");                        
-                        foreach (Recipe recipe in recipes)
+                        Console.WriteLine("***********************************************");
+
+                        var sortedRecipes = recipes.OrderBy(r => r.RecipeName);
+
+                        foreach (Recipe recipe in sortedRecipes)
                         {
                             Console.WriteLine($"RecipeName: {recipe.RecipeName}");
                             Console.WriteLine("Ingredients: ");
