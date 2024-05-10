@@ -48,23 +48,53 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
             Steps.Add(step);
         }
 
-        public void DisplayRecipe()
+        public void DisplayRecipe(bool showAllIngredients)
         {
-            Console.WriteLine("**********************************************************************************");
-            Console.WriteLine($"Recipe Name: {RecipeName}");
-            Console.WriteLine("Ingredients: ");
-            foreach(var ingredient in Ingredients)
+            if (showAllIngredients)
             {
-                Console.WriteLine($"{ingredient.Name}: {ingredient.Quantity} {ingredient.UnitOfMeasurement}");
-            }Console.WriteLine("Steps: ");
-            int stepNumber = 1;
-            foreach (var step in Steps)
+                Console.WriteLine("Ingredients:");
+                foreach (var ingredient in Ingredients)
+                {
+                    Console.WriteLine($"{ingredient.Name}: {ingredient.Quantity} {ingredient.UnitOfMeasurement} (Food Group: {ingredient.FoodGroup})");
+                }
+            }
+            else
             {
-                Console.WriteLine($"Step {stepNumber}: {step}");
-                stepNumber++;
+                Console.WriteLine($"Ingredients: {Ingredients.Count} ingredient(s) recorded.");
             }
 
-            Console.WriteLine("**********************************************************************************");
+            if (showAllIngredients && Steps.Count > 0)
+            {
+                Console.WriteLine("Steps:");
+                int stepNumber = 1;
+                foreach (var step in Steps)
+                {
+                    Console.WriteLine($"Step {stepNumber}: {step}");
+                    stepNumber++;
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Steps: {Steps.Count} step(s) recorded.");
+            }
+
+            double totalCalories = CalculateTotalCalories();
+            Console.Write($"Total Calories: {totalCalories} ");
+
+            if (totalCalories >= 0 && totalCalories <= 300)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"(Total calories of {RecipeName} are between 0 and 300. This is still in a healthy calorie range.)");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"(ALERT!!! Calories above 300 may be unhealthy.)");
+                CalorieNotifier?.Invoke($"ALERT!!! The recipe '{RecipeName}' exceeds 300 calories.");
+            }
+
+            Console.ResetColor();
+            Console.WriteLine("***********************************************");
         }
 
         public void ScaleRecipe(double factor)
