@@ -106,8 +106,23 @@ namespace RecipeMethodTest
         [Test]
         public void ResetRecipe_ResetsIngredientsToOriginalValues()
         {
+           
+            recipe.ScaleRecipe(2); // Scale recipe with a factor of 2
 
+            // Act
+            recipe.ResetRecipe();
+
+            // Assert
+            foreach (var ingredient in recipe.Ingredients)
+            {
+                Assert.AreEqual(ingredient.OriginalQuantity, ingredient.Quantity);
+                Assert.AreEqual(ingredient.OriginalCalories, ingredient.Calories);
+            }
         }
+    }
+}
+
+        
 
 
 
