@@ -29,6 +29,10 @@ namespace RecipeMethodTest
         public void CalculateTotalCalories_ReturnsCorrectTotal()
     {
         double expectedTotalCalories = 130;
+
+        double actualTotalCalories = recipe.CalculateTotalCalories();
+
+        Assert.AreEqual(expectedTotalCalories, actualTotalCalories);
     }
 
         [Test]
