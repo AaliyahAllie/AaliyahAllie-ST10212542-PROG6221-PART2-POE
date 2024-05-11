@@ -2,9 +2,13 @@ namespace RecipeMethodTest
 {
     public class RecipeTests
     {
+        private StringWriter consoleOutput;
+        private Recipe recipe;
+
         [SetUp]
         public void Setup()
         {
+            
         }
 
         [Test]
