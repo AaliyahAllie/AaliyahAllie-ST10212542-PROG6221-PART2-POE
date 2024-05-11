@@ -73,7 +73,22 @@ namespace RecipeMethodTest
             Assert.AreEqual(expectedOutput, consoleOutput.ToString());
 
         }
+        [Test]
+        public void CalorieNotification_InvokesNotifier_WhenCaloriesAboveRange()
+        {
+            double totalCalories = 400;
+
+            string expectedNotifierMessage = $"ALERT!!! The recipe '{recipe.RecipeName}' exceeds 300 calories.";
+
+            string capturedNotifierMessage = null;
+            Action<string> notifierAction = (message) => capturedNotifierMessage = message;
+
+            recipe.NotifyCalorieStatus(totalCalories, notifierAction);
+
+            Assert.AreEqual(expectedNotifierMessage, capturedNotifierMessage);
+        }
+
 
 
     }
-    }
+}
