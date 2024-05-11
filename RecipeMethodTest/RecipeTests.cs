@@ -25,6 +25,12 @@ namespace RecipeMethodTest
             }
         }
 
+        [TearDown]
+        public void CalculateTotalCalories_ReturnsCorrectTotal()
+    {
+        double expectedTotalCalories = 130;
+    }
+
         [Test]
         public void Test1()
         {
