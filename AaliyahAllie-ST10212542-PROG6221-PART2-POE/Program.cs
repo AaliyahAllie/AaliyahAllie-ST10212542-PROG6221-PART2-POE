@@ -57,7 +57,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                
                 switch (userChoice)
                 { 
-               case 1:
+                    case 1:
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("Are you sure you want to enter a new recipe? (y/n)");
                     string recipeConfirmation = Console.ReadLine().ToLower();
