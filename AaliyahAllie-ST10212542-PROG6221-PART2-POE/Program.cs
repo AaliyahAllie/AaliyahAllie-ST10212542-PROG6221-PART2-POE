@@ -147,7 +147,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
 
                 case 2:
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.WriteLine("Are you sure ypu want to display the recipe?(y/n)");
+                        Console.WriteLine("Are you sure you want to display the recipe?(y/n)");
                         string displayConfirmation = Console.ReadLine().ToLower();                       
                         if (displayConfirmation == "y")                        {
                             Console.WriteLine("Now Displaying Recipe");
@@ -179,7 +179,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         
                     case 3:
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.WriteLine("Are you sure ypu want to display a specific recipe?(y/n)");
+                        Console.WriteLine("Are you sure you want to display a specific recipe?(y/n)");
                         string displaySpecificConfirmation = Console.ReadLine().ToLower();
                         if (displaySpecificConfirmation == "y")
                         {
@@ -222,7 +222,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
 
                     case 4:
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.WriteLine("Are you sure ypu want to scale the recipe?(y/n)");
+                        Console.WriteLine("Are you sure you want to scale the recipe?(y/n)");
                         string scaleConfirmation = Console.ReadLine().ToLower();                        
                         if (scaleConfirmation == "y")
                         {
@@ -279,7 +279,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
 
                     case 5:
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.WriteLine("Are you sure ypu want to reset recipe?(y/n)");
+                        Console.WriteLine("Are you sure you want to reset recipe?(y/n)");
                         string resetConfirmation = Console.ReadLine().ToLower();                        
                         if (resetConfirmation == "y")
                         {
@@ -328,7 +328,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
 
                     case 6:
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.WriteLine("Are you sure ypu want to clear all recipes?(y/n)");
+                        Console.WriteLine("Are you sure you want to clear all recipes?(y/n)");
                         string clearConfirmation = Console.ReadLine().ToLower();                        
                         if (clearConfirmation == "y")
                         {
@@ -358,7 +358,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
 
                     case 7:
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.WriteLine("Are you sure ypu want to clear a recipe's data(y/n)");
+                        Console.WriteLine("Are you sure you want to clear a recipe's data(y/n)");
                         string clear2Confirmation = Console.ReadLine().ToLower();
                         if (clear2Confirmation == "y")
                         {
