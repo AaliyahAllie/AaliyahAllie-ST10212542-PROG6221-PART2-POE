@@ -27,18 +27,27 @@ namespace RecipeMethodTest
 
         [TearDown]
         public void CalculateTotalCalories_ReturnsCorrectTotal()
-    {
+        {
         double expectedTotalCalories = 130;
 
         double actualTotalCalories = recipe.CalculateTotalCalories();
 
         Assert.AreEqual(expectedTotalCalories, actualTotalCalories);
-    }
+        }
 
         [Test]
-        public void Test1()
+        public void CalculateTotalCalories_ReturnsZero_WhenNoIngredients()
         {
-            Assert.Pass();
+        recipe.Ingredients = new List<Ingredient>();
+
+        double expectedTotalCalories = 0;
+
+        double actualTotalCalories = recipe.CalculateTotalCalories();
+
+        Assert.AreEqual(expectedTotalCalories,actualTotalCalories);
+        }
+        {
+            
         }
     }
 }
