@@ -4,99 +4,100 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
 {
     public class Recipe
     {
-        public delegate void RecipeCalorieNotification(string message);
-        public string RecipeName { get; set; }
-        public List<Ingredient> Ingredients { get; set; }
-        public List<string> Steps { get; set; }
-        public RecipeCalorieNotification CalorieNotifer { get; set; }
-        public Recipe(string recipeName)
-        {
-            RecipeName = recipeName;
-            Ingredients = new List<Ingredient>();
-            Steps = new List<string>();
-        }
-
-        public void AddIngredients(string name, int quantity,string unitOfMeasurement,double calories)
-        {
-            Console.WriteLine("Available Food Groups:");
-            DisplayFoodGroupOptions();
-            Console.WriteLine("Enter the number corresponding to the food group this ingredient belongs to:");
-            int FoodGroupChoice;
-            if (!int.TryParse(Console.ReadLine(), out FoodGroupChoice) || !AvailableFoodGroups.ContainsKey(FoodGroupChoice))
+       
+            public delegate void RecipeCalorieNotification(string message);
+            public string RecipeName { get; set; }
+            public ICollection<Ingredient> Ingredients { get; set; } 
+            public ICollection<string> Steps { get; set; } 
+            public RecipeCalorieNotification CalorieNotifer { get; set; }
+            public Recipe(string recipeName)
             {
-                Console.WriteLine("Invalid food group choice. Please select a valid number from the options.");
-                return;
+                RecipeName = recipeName;
+                Ingredients = new List<Ingredient>(); 
+                Steps = new List<string>(); 
             }
-            string foodGroup = AvailableFoodGroups[FoodGroupChoice];
-            Ingredients.Add(new Ingredient
+
+            public void AddIngredients(string name, int quantity, string unitOfMeasurement, double calories)
             {
-                Name = name,
-                Quantity = quantity,
-                OriginalQuantity = quantity,
-                UnitOfMeasurement = unitOfMeasurement,
-                Calories = calories,
-                OriginalCalories = calories,
-                FoodGroup = foodGroup,
-                FoodGroupNumber = FoodGroupChoice
-            });
-
-
-        }
-    
-        public void AddStep(string step)
-        {
-            Steps.Add(step);
-        }
-
-        public void DisplayRecipe(bool showAllIngredients)
-        {
-            if (showAllIngredients)
-            {
-                Console.WriteLine("Ingredients:");
-                foreach (var ingredient in Ingredients)
+                Console.WriteLine("Available Food Groups:");
+                DisplayFoodGroupOptions();
+                Console.WriteLine("Enter the number corresponding to the food group this ingredient belongs to:");
+                int FoodGroupChoice;
+                if (!int.TryParse(Console.ReadLine(), out FoodGroupChoice) || !AvailableFoodGroups.ContainsKey(FoodGroupChoice))
                 {
-                    Console.WriteLine($"{ingredient.Name}: {ingredient.Quantity} {ingredient.UnitOfMeasurement} (Food Group: {ingredient.FoodGroup})");
+                    Console.WriteLine("Invalid food group choice. Please select a valid number from the options.");
+                    return;
                 }
-            }
-            else
-            {
-                Console.WriteLine($"Ingredients: {Ingredients.Count} ingredient(s) recorded.");
-            }
-
-            if (showAllIngredients && Steps.Count > 0)
-            {
-                Console.WriteLine("Steps:");
-                int stepNumber = 1;
-                foreach (var step in Steps)
+                string foodGroup = AvailableFoodGroups[FoodGroupChoice];
+                Ingredients.Add(new Ingredient
                 {
-                    Console.WriteLine($"Step {stepNumber}: {step}");
-                    stepNumber++;
+                    Name = name,
+                    Quantity = quantity,
+                    OriginalQuantity = quantity,
+                    UnitOfMeasurement = unitOfMeasurement,
+                    Calories = calories,
+                    OriginalCalories = calories,
+                    FoodGroup = foodGroup,
+                    FoodGroupNumber = FoodGroupChoice
+                });
+
+
+            }
+
+            public void AddStep(string step)
+            {
+                Steps.Add(step);
+            }
+
+            public void DisplayRecipe(bool showAllIngredients)
+            {
+                if (showAllIngredients)
+                {
+                    Console.WriteLine("Ingredients:");
+                    foreach (var ingredient in Ingredients)
+                    {
+                        Console.WriteLine($"{ingredient.Name}: {ingredient.Quantity} {ingredient.UnitOfMeasurement} (Food Group: {ingredient.FoodGroup})");
+                    }
                 }
-            }
-            else
-            {
-                Console.WriteLine($"Steps: {Steps.Count} step(s) recorded.");
-            }
+                else
+                {
+                    Console.WriteLine($"Ingredients: {Ingredients.Count} ingredient(s) recorded.");
+                }
 
-            double totalCalories = CalculateTotalCalories();
-            Console.Write($"Total Calories: {totalCalories} ");
+                if (showAllIngredients && Steps.Count > 0)
+                {
+                    Console.WriteLine("Steps:");
+                    int stepNumber = 1;
+                    foreach (var step in Steps)
+                    {
+                        Console.WriteLine($"Step {stepNumber}: {step}");
+                        stepNumber++;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Steps: {Steps.Count} step(s) recorded.");
+                }
 
-            if (totalCalories >= 0 && totalCalories <= 300)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"(Total calories of {RecipeName} are between 0 and 300. This is still in a healthy calorie range.)");
+                double totalCalories = CalculateTotalCalories();
+                Console.Write($"Total Calories: {totalCalories} ");
+
+                if (totalCalories >= 0 && totalCalories <= 300)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"(Total calories of {RecipeName} are between 0 and 300. This is still in a healthy calorie range.)");
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"(ALERT!!! Calories above 300 may be unhealthy.)");
+                    CalorieNotifer?.Invoke($"ALERT!!! The recipe '{RecipeName}' exceeds 300 calories.");
+                }
+
+                Console.ResetColor();
+                Console.WriteLine("***********************************************");
+
             }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"(ALERT!!! Calories above 300 may be unhealthy.)");
-                CalorieNotifer?.Invoke($"ALERT!!! The recipe '{RecipeName}' exceeds 300 calories.");
-            }
-
-            Console.ResetColor();
-            Console.WriteLine("***********************************************");
-
-        }
 
             public double CalculateTotalCalories()
             {
@@ -108,7 +109,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                 return totalCalories;
             }
 
-        public static readonly Dictionary<int, string> AvailableFoodGroups = new Dictionary<int, string>
+            public static readonly Dictionary<int, string> AvailableFoodGroups = new Dictionary<int, string>
         {
             { 1, "Starchy foods" },
             { 2, "Vegetables and fruits" },
@@ -119,36 +120,37 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
             { 7, "Water" }
         };
 
-        public static void DisplayFoodGroupOptions()
-        {
-            foreach (var foodGroup in AvailableFoodGroups)
+            public static void DisplayFoodGroupOptions()
             {
-                Console.WriteLine($"{foodGroup.Key}. {foodGroup.Value}");
+                foreach (var foodGroup in AvailableFoodGroups)
+                {
+                    Console.WriteLine($"{foodGroup.Key}. {foodGroup.Value}");
+                }
             }
-        }
 
-        public void ScaleRecipe(double factor)
-        {
-            foreach (var ingredient in Ingredients)
+            public void ScaleRecipe(double factor)
             {
-                // Scale the original quantity of each ingredient by the given factor
-                ingredient.Quantity = (int)(ingredient.OriginalQuantity * factor);
-                //Scale the calories 
-                ingredient.Calories *= factor;
+                foreach (var ingredient in Ingredients)
+                {
+                    // Scale the original quantity of each ingredient by the given factor
+                    ingredient.Quantity = (int)(ingredient.OriginalQuantity * factor);
+                    //Scale the calories 
+                    ingredient.Calories *= factor;
+                }
             }
-        }
 
-        public void ResetRecipe()
-        {
-            //Reset quantities of each ingredient to original values
-            foreach (var ingredient in Ingredients)
+            public void ResetRecipe()
             {
-                ingredient.Quantity = ingredient.OriginalQuantity;
-                //reset calories to original
-                ingredient.Calories = ingredient.OriginalCalories;
+                //Reset quantities of each ingredient to original values
+                foreach (var ingredient in Ingredients)
+                {
+                    ingredient.Quantity = ingredient.OriginalQuantity;
+                    //reset calories to original
+                    ingredient.Calories = ingredient.OriginalCalories;
+                }
             }
-        }
 
-       
+
     }
+    
 }
