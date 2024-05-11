@@ -60,7 +60,20 @@ namespace RecipeMethodTest
             Assert.AreEqual(expectedOutput, consoleOutput.ToString());
 
         }
+        [Test]
+        public void CalorieNotification_PrintsRed_WhenCaloriesAboveRange()
+        {
+            double totalCalories = 350;
+
+            string expectedOutput = $"Total Calories: {totalCalories} (ALERT!!! Calories above 300 may be unhealthy.)\r\n";
+
+            recipe.NotifyCalorieStatus(totalCalories);
+
+            Assert.AreEqual(ConsoleColor.Red, Console.ForegroundColor);
+            Assert.AreEqual(expectedOutput, consoleOutput.ToString());
+
+        }
 
 
     }
-}
+    }
