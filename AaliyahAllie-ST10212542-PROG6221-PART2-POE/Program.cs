@@ -197,7 +197,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         Console.WriteLine("***********************************************");
                         Console.WriteLine("LIST OF RECIPES:");
                         Console.WriteLine("***********************************************");
-                        var sortedRecipesByNameForDisplayingSpecificRecipe = recipes.OrderBy(r => r.RecipeName).ThenBy(r => r.RecipeName);
+                        var sortedRecipesByNameForDisplayingSpecificRecipe = recipes.OrderBy(r => r.RecipeName);
                         foreach (Recipe recipe in recipes)
                         {
                             Console.WriteLine($"RecipeName: {recipe.RecipeName}");
@@ -247,7 +247,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         Console.WriteLine("***********************************************");
                         Console.WriteLine("LIST OF RECIPES:");
                         Console.WriteLine("***********************************************");
-                        var sortedRecipesByNameForScaling = recipes.OrderBy(r => r.RecipeName).ThenBy(r => r.RecipeName);
+                        var sortedRecipesByNameForScaling = recipes.OrderBy(r => r.RecipeName);
                         foreach (Recipe recipe in recipes)
                         {
                             Console.WriteLine($"RecipeName: {recipe.RecipeName}");
@@ -304,7 +304,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         Console.WriteLine("***********************************************");
                         Console.WriteLine("LIST OF RECIPES:");
                         Console.WriteLine("***********************************************");
-                        var sortedRecipesByNameForReseting = recipes.OrderBy(r => r.RecipeName).ThenBy(r => r.RecipeName);
+                        var sortedRecipesByNameForReseting = recipes.OrderBy(r => r.RecipeName);
                         foreach (Recipe recipe in recipes)
                         {
                             Console.WriteLine($"RecipeName: {recipe.RecipeName}");
@@ -383,7 +383,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                         Console.WriteLine("***********************************************");
                         Console.WriteLine("LIST OF RECIPES:");
                         Console.WriteLine("***********************************************");
-                        var sortedRecipesByNameForClearing = recipes.OrderBy(r => r.RecipeName).ThenBy(r => r.RecipeName);
+                        var sortedRecipesByNameForClearing = recipes.OrderBy(r => r.RecipeName);
                         foreach (Recipe recipe in recipes)
                         {
                             Console.WriteLine($"RecipeName: {recipe.RecipeName}");
