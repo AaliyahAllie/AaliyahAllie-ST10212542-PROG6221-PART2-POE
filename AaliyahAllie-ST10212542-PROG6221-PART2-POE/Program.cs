@@ -56,33 +56,48 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                 Console.WriteLine();
                
                 switch (userChoice)
-                {
-                    case 1:
-                        Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        Console.WriteLine("Are you sure you want to enter a new recipe?(y/n)");
-                        string recipeConfirmation = Console.ReadLine().ToLower();
-                        if (recipeConfirmation == "y")
-                        {
-                            Console.WriteLine("Now Capturing Recipe");
-                        }
-                        else if (recipeConfirmation == "n")
-                        {
-                            Console.WriteLine("Returning to the main menu.");
-                            continue;
-                        }
-                        Console.ResetColor();
-                        Console.WriteLine("***********************************************");
-                        Console.WriteLine("ENTER NEW RECIPE DETAILS");
-                        Console.WriteLine("***********************************************");
+                { 
+               case 1:
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("Are you sure you want to enter a new recipe? (y/n)");
+                    string recipeConfirmation = Console.ReadLine().ToLower();
+                    if (recipeConfirmation == "n")
+                    {
+                        Console.WriteLine("Returning to the main menu.");
+                        continue;
+                    }
+                    else if (recipeConfirmation != "y")
+                    {
+                        Console.WriteLine("Invalid input. Returning to the main menu.");
+                        continue;
+                    }
+
+                    Console.ResetColor();
+                    Console.WriteLine("***********************************************");
+                    Console.WriteLine("ENTER NEW RECIPE DETAILS");
+                    Console.WriteLine("***********************************************");
+
+                    Console.WriteLine("Enter the number of recipes you want to enter: ");
+                    int numRecipes;
+                    if (!int.TryParse(Console.ReadLine(), out numRecipes) || numRecipes <= 0)
+                    {
+                        Console.WriteLine("Invalid input. Please enter a valid number greater than 0.");
+                        continue;
+                    }
+
+                    for (int j = 0; j < numRecipes; j++)
+                    {
+                        Console.WriteLine($"Recipe {j + 1}:");
                         Console.WriteLine("Enter recipe name: ");
                         string recipeName = Console.ReadLine();
                         Recipe newRecipe = new Recipe(recipeName);
                         newRecipe.CalorieNotifer = DisplayCalorieNotification; // Assigning the delegate
+
                         Console.WriteLine("Enter number of ingredients: ");
                         int numIngredients;
-                        if (!int.TryParse(Console.ReadLine(), out numIngredients))
+                        if (!int.TryParse(Console.ReadLine(), out numIngredients) || numIngredients <= 0)
                         {
-                            Console.WriteLine("INVALID INPUT.PLEASE ENTER A VALID NUMBER.");
+                            Console.WriteLine("Invalid input. Please enter a valid number greater than 0.");
                             continue;
                         }
                         for (int i = 0; i < numIngredients; i++)
@@ -92,27 +107,28 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             string ingredientName = Console.ReadLine();
                             Console.WriteLine("Quantity: ");
                             int ingredientQuantity;
-                            if (!int.TryParse(Console.ReadLine(), out ingredientQuantity))
+                            if (!int.TryParse(Console.ReadLine(), out ingredientQuantity) || ingredientQuantity <= 0)
                             {
-                                Console.WriteLine("Invalid input.Please enter a valid number.");
+                                Console.WriteLine("Invalid input. Please enter a valid number greater than 0.");
                                 continue;
                             }
                             Console.WriteLine("Unit of Measurement (ml/mg/teaspoon/tablespoon/cup)");
                             string unitOfMeasurement = Console.ReadLine();
                             Console.WriteLine("Enter calorie amount: ");
                             double calories;
-                            if (!double.TryParse(Console.ReadLine(), out calories))
+                            if (!double.TryParse(Console.ReadLine(), out calories) || calories <= 0)
                             {
-                                Console.WriteLine("Invalid input. Please enter a valid number.");
+                                Console.WriteLine("Invalid input. Please enter a valid number greater than 0.");
                                 continue;
                             }
                             newRecipe.AddIngredients(ingredientName, ingredientQuantity, unitOfMeasurement, calories);
                         }
+
                         Console.WriteLine("Enter the number of steps: ");
                         int numSteps;
-                        if (!int.TryParse(Console.ReadLine(), out numSteps))
+                        if (!int.TryParse(Console.ReadLine(), out numSteps) || numSteps <= 0)
                         {
-                            Console.WriteLine("Invalid input. Please enter a valid number.");
+                            Console.WriteLine("Invalid input. Please enter a valid number greater than 0.");
                             continue;
                         }
                         for (int i = 0; i < numSteps; i++)
@@ -121,12 +137,15 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                             string step = Console.ReadLine();
                             newRecipe.AddStep(step);
                         }
-                        recipes.Add(newRecipe);
-                        Console.WriteLine("RECIPE SUCCESSFULLY SAVED");
-                        Console.WriteLine();
-                        break;
 
-                    case 2:
+                        recipes.Add(newRecipe);
+                        Console.WriteLine($"Recipe {recipeName} successfully saved.");
+                        Console.WriteLine();
+                    }
+                    break;
+
+
+                case 2:
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("Are you sure ypu want to display the recipe?(y/n)");
                         string displayConfirmation = Console.ReadLine().ToLower();                       
