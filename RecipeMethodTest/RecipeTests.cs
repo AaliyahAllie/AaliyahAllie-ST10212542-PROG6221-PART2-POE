@@ -88,6 +88,24 @@ namespace RecipeMethodTest
             Assert.AreEqual(expectedNotifierMessage, capturedNotifierMessage);
         }
 
+        [Test]
+        public void ScaleRecipe_ScalesIngredientsCorrectly()
+        {
+            double scaleFactor = 2;
+
+            List<Ingredient> expectedIngredients = new List<Ingredient>
+            {
+                new Ingredient { OriginalQuantity = 100, Quantity = 200, OriginalCalories = 50, Calories = 100 },
+
+                new Ingredient { OriginalQuantity = 200, Quantity = 400, OriginalCalories = 80, Calories = 160 }
+
+            };
+            recipe.ScaleRecipe(scaleFactor);
+            CollectionAssert.AreEqual(expectedIngredients, recipe.Ingredients);
+        }
+
+
+
 
 
     }
