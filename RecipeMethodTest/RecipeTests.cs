@@ -103,6 +103,11 @@ namespace RecipeMethodTest
             recipe.ScaleRecipe(scaleFactor);
             CollectionAssert.AreEqual(expectedIngredients, recipe.Ingredients);
         }
+        [Test]
+        public void ResetRecipe_ResetsIngredientsToOriginalValues()
+        {
+
+        }
 
 
 
