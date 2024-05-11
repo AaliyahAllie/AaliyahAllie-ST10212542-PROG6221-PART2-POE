@@ -1,6 +1,6 @@
 namespace RecipeMethodTest
 {
-    public class RecipeTests
+    public class RecipeTestsCalculateTotalCalories_Test()
     {
         [SetUp]
         public void Setup()
