@@ -14,16 +14,16 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
 
             double totalCalories = recipe.CalculateTotalCalories();
 
-            Assert.AreEqual(0,totalCalories);
+            Assert.AreEqual(0, totalCalories);
         }
 
         [TestMethod]
         public void TestCalculateTotalCalories_OneIngredient()
         {
             Recipe recipe = new Recipe("Test Recipe");
-            recipe.AddIngredients("Ingredient 1", 100, "mg",50);
+            recipe.AddIngredients("Ingredient 1", 100, "mg", 50);
             double totalCalories = recipe.CalculateTotalCalories();
-            Assert.AreEqual(50,totalCalories);
+            Assert.AreEqual(50, totalCalories);
         }
 
         [TestMethod]
@@ -31,16 +31,16 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
         {
             Recipe recipe = new Recipe("Test Recipe");
             recipe.AddIngredients("Ingredient 1", 100, "mg", 50);
-            recipe.AddIngredients("Ingredient 2", 200, "ml",100);
+            recipe.AddIngredients("Ingredient 2", 200, "ml", 100);
             double totalCalories = recipe.CalculateTotalCalories();
             Assert.AreEqual(150, totalCalories);
-
         }
+
         [TestMethod]
         public void TestCalculateTotalCalories_NegQuantity()
         {
             Recipe recipe = new Recipe("TestRecipe");
-            recipe.AddIngredients("Ingredient 1",-100, "mg", 50);
+            recipe.AddIngredients("Ingredient 1", -100, "mg", 50);
             double totalCalories = recipe.CalculateTotalCalories();
             Assert.AreEqual(0, totalCalories);
         }
@@ -60,7 +60,7 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
             Recipe recipe = new Recipe("TestRecipe");
             recipe.AddIngredients("Ingredient 1", int.MaxValue, "mg", double.MaxValue);
             double totalCalories = recipe.CalculateTotalCalories();
-            Assert.AreEqual(double.PositiveInfinity,totalCalories);
+            Assert.AreEqual(double.MaxValue, totalCalories);
         }
 
         [TestMethod]
