@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AaliyahAllie-ST10212542-PROG6221-PART2-POE", "AaliyahAllie-ST10212542-PROG6221-PART2-POE\AaliyahAllie-ST10212542-PROG6221-PART2-POE.csproj", "{E8E2A7B6-2F34-4459-8CBD-C4FA40448FD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeMethodTest", "RecipeMethodTest\RecipeMethodTest.csproj", "{9CD3EB34-3137-4C7E-BD1D-5DD0526FD9BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeTests", "RecipeTests\RecipeTests.csproj", "{EC27030A-7F8F-4E81-9A93-53F41E5BF6BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{E8E2A7B6-2F34-4459-8CBD-C4FA40448FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8E2A7B6-2F34-4459-8CBD-C4FA40448FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8E2A7B6-2F34-4459-8CBD-C4FA40448FD4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9CD3EB34-3137-4C7E-BD1D-5DD0526FD9BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9CD3EB34-3137-4C7E-BD1D-5DD0526FD9BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9CD3EB34-3137-4C7E-BD1D-5DD0526FD9BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9CD3EB34-3137-4C7E-BD1D-5DD0526FD9BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC27030A-7F8F-4E81-9A93-53F41E5BF6BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC27030A-7F8F-4E81-9A93-53F41E5BF6BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC27030A-7F8F-4E81-9A93-53F41E5BF6BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC27030A-7F8F-4E81-9A93-53F41E5BF6BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
