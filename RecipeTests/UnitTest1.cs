@@ -53,6 +53,16 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
             double totalCalories = recipe.CalculateTotalCalories();
             Assert.AreEqual(0, totalCalories);
         }
+
+        [TestMethod]
+        public void TestCalculateTotalCalories_OverFlow()
+        {
+            Recipe recipe = new Recipe("TestRecipe");
+            recipe.AddIngredients("Ingredient 1", int.MaxValue, "mg", double.MaxValue);
+            double totalCalories = recipe.CalculateTotalCalories();
+            Assert.AreEqual(double.PositiveInfinity,totalCalories);
+        }
+
         [TestMethod]
         public void TestScaleRecipe()
         {
