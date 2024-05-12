@@ -514,6 +514,17 @@ C:\Users\Admin\source\repos\AaliyahAllie-ST10212542-PROG6221-PART2-POE\AaliyahAl
 To automatically close the console when debugging stops, enable Tools->Options->Debugging->Automatically close the console when debugging stops.
 Press any key to close this window . . .
 
-
+Delegate function:
+***********************************************
+DISPLAYING ALL RECIPE DETAILS:
+***********************************************
+Recipe Name: a
+Ingredients:
+1: 1 cup (Food Group: Starchy foods, Calories: 350)
+Steps:
+Step 1: 1
+Total Calories: 350 (ALERT!!! Calories above 300 may be unhealthy.)
+ALERT!!! The recipe 'a' exceeds 300 calories.
+***********************************************
 
 
