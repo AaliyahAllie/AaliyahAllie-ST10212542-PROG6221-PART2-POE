@@ -27,7 +27,14 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
         }
 
         [TestMethod]
-
+        public void TestCalculateTotalCalories_MultipleIngredients()
+        {
+            Recipe recipe = new Recipe("Test Recipe");
+            recipe.AddIngredients("Ingredient 1", 100, "mg", 50);
+            recipe.AddIngredients("Ingredient 2", 200, "ml",100);
+            double totalCalories = recipe.CalculateTotalCalories();
+            Assert.AreEqual(150, totalCalories);
+        }
         [TestMethod]
         public void TestScaleRecipe()
         {
