@@ -26,5 +26,24 @@ namespace AaliyahAllie_ST10212542_PROG6221_PART2_POE
                 Assert.AreEqual(ingredient.OriginalCalories * factor, ingredient.Calories);
             }
         }
+
+        [TestMethod]
+        public void TestResetRecipe()
+        {
+            // Arrange
+            Recipe recipe = new Recipe("Test Recipe");
+            recipe.AddIngredients("Ingredient 1", 100, "g", 50);
+            recipe.AddIngredients("Ingredient 2", 200, "ml", 100);
+
+            // Act
+            recipe.ResetRecipe();
+
+            // Assert
+            foreach (var ingredient in recipe.Ingredients)
+            {
+                Assert.AreEqual(ingredient.OriginalQuantity, ingredient.Quantity);
+                Assert.AreEqual(ingredient.OriginalCalories, ingredient.Calories);
+            }
+        }
     }
 }
